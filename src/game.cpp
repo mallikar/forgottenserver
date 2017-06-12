@@ -772,7 +772,7 @@ ReturnValue Game::internalMoveCreature(Creature* creature, Direction direction, 
 				if (tmpTile && tmpTile->getGround() && !tmpTile->hasFlag(TILESTATE_BLOCKSOLID)) {
 					flags |= FLAG_IGNOREBLOCKITEM | FLAG_IGNOREBLOCKCREATURE;
 
-					if (!tmpTile->hasFlag(TILESTATE_FLOORCHANGE)) {
+					if (!tmpTile->hasFlag(TILESTATE_FLOORCHANGE) && map.getTile(destPos.x, destPos.y, destPos.z)->hasFlag(TILESTATE_BLOCKSOLID)) {
 						player->setDirection(direction);
 						destPos.z--;
 					}
